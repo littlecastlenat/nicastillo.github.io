@@ -4,11 +4,15 @@ import lifeData from './data/lifedata.json';
 import React, { useState, useEffect } from 'react';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import { StarRateRounded, WorkRounded, SchoolRounded} from '@material-ui/icons';
+import { StarRateRounded, WorkRounded, SchoolRounded} from '@mui/icons-material';
 import LifeEvent from './LifeEvent';
 import './App.css';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
+import { purple } from '@mui/material/colors';
+
+
+//todo aug 19- filter/unfilter based on chips selected
 
 /** Theme Colors
  * Dark - #262329
@@ -17,15 +21,25 @@ import { createTheme } from '@mui/material/styles';
  * Light - #fff
  * OFfwhite - #f8f8ff
 */
-
+  
 function App() {
   let lifeDataEvents = lifeData.events;
-  const [events] = useState(lifeDataEvents);
+  let updatedLifeDataEvents = []
+  const [events, setEvents] = useState(lifeDataEvents);
+  const [currentWorkVariant, setCurrentWorkVariant] = useState('outlined');
+  //const [currentButtonVariant, setCurrentButtonVariant] = useState('');
+  const [currentSchoolVariant, setCurrentSchoolVariant] = useState('outlined');
+  const [currentLifeVariant, setCurrentLifeVariant] = useState('outlined');
+
   
   useEffect(() => {
     // Update the document title using the browser API
     //document.title = `You clicked ${events} times`;
   });
+
+
+  
+
 
   const theme = createTheme({
     typography: {
@@ -44,16 +58,61 @@ function App() {
     },
     palette: {
       primary: {
-        main: purple[500],
+        main: '#796388',
       },
       secondary: {
-        main: '#f44336',
+        main: '#728863',
       },
     },
+    
   });
   
-  return (
+  const updateEventsList = () => {
 
+  };
+
+
+  
+  const handleWorkButtonClick = () => {
+    console.info('You clicked the Chip.');
+    if (currentWorkVariant === 'outlined') {
+      setCurrentWorkVariant('contained');
+      //console.log(`before ${lifeDataEvents.length}`);
+      lifeDataEvents = lifeDataEvents.filter((event) => event.category != 'work');
+      setEvents(lifeDataEvents);
+      //console.log(`after ${lifeDataEvents.length}`);
+    }
+    else {
+      setCurrentWorkVariant('outlined');
+    }
+  };
+
+  const handleLifeButtonClick = () => {
+    console.info('You clicked the Chip.');
+    if (currentLifeVariant === 'outlined') {
+      setCurrentLifeVariant('contained');
+      lifeDataEvents = lifeDataEvents.filter((event) => event.category != 'personal');
+      setEvents(lifeDataEvents);
+    }
+    else {
+      setCurrentLifeVariant('outlined');
+    }
+  };
+
+  const handleSchoolButtonClick = () => {
+    console.info('You clicked the Chip.');
+    if (currentSchoolVariant === 'outlined') {
+      setCurrentSchoolVariant('contained');
+      lifeDataEvents = lifeDataEvents.filter((event) => event.category != 'personal');
+      setEvents(lifeDataEvents);
+    }
+    else {
+      setCurrentSchoolVariant('outlined');
+    }
+  };
+
+
+  return (
     <ThemeProvider theme={theme}>
     {<div className="App">
       <header className="App-header">
@@ -61,9 +120,24 @@ function App() {
       </header>
       <div className="Main">
         <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
-          <Chip icon={<StarRateRounded/>} label="Chip Outlined" variant="outlined" />
-          <Chip icon={<WorkRounded/>} label="Chip Outlined" variant="outlined" />
-          <Chip icon={<SchoolRounded/>} label="Chip Outlined" />
+          <Chip icon={<StarRateRounded/>} 
+                label="Life" 
+                variant={currentLifeVariant}
+                color="primary"
+                onClick={handleLifeButtonClick} 
+          />
+          <Chip icon={<WorkRounded/>} 
+                label="Work" 
+                variant={currentWorkVariant}
+                color="primary"
+                onClick={handleWorkButtonClick} 
+          />
+          <Chip icon={<SchoolRounded/>} 
+                label="School" 
+                variant={currentSchoolVariant}
+                color="primary"
+                onClick={handleSchoolButtonClick} 
+          />
         </Stack>
         <div className="LifePathWrapper">
           <div className="event-list">

@@ -6,6 +6,10 @@ import IconButton from '@material-ui/core/IconButton';
 
 import './LifeEvent.css';
 
+
+//todo update this whole mess to NOT use style components and just use native MUI
+
+
 const LifeEvent = (props) => {
     function getModalStyle() {
         const top = 50;
