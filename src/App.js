@@ -10,6 +10,8 @@ import './App.css';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
+import DoneIcon from '@mui/icons-material/Done';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 //todo aug 19- filter/unfilter based on chips selected
@@ -26,20 +28,18 @@ function App() {
   let lifeDataEvents = lifeData.events;
   let updatedLifeDataEvents = []
   const [events, setEvents] = useState(lifeDataEvents);
-  const [currentWorkVariant, setCurrentWorkVariant] = useState('outlined');
+  const [currentWorkVariant, setCurrentWorkVariant] = useState('contained');
   //const [currentButtonVariant, setCurrentButtonVariant] = useState('');
-  const [currentSchoolVariant, setCurrentSchoolVariant] = useState('outlined');
-  const [currentLifeVariant, setCurrentLifeVariant] = useState('outlined');
+  const [currentSchoolVariant, setCurrentSchoolVariant] = useState('contained');
+  const [currentLifeVariant, setCurrentLifeVariant] = useState('contained');
+  const [clicked, setClicked] = useState(true);
+
 
   
   useEffect(() => {
     // Update the document title using the browser API
     //document.title = `You clicked ${events} times`;
   });
-
-
-  
-
 
   const theme = createTheme({
     typography: {
@@ -64,26 +64,54 @@ function App() {
         main: '#728863',
       },
     },
+    // chip: {
+    //   margin: theme.spacing(0.5),
+    //   "& .MuiChip-deleteIcon": {
+    //     display: "none"
+    //   },
+    //   "&:hover": {
+    //     "& .MuiChip-deleteIcon": {
+    //       display: "block"
+    //     }
+    //   }
+    // },
     
   });
   
+  const updateDeleteIcon = () => {
+    console.log(clicked);
+    if (clicked === true){
+      return false;
+      console.log("here")
+    } else {
+      setClicked(!clicked);
+    }
+  };
+
   const updateEventsList = () => {
 
   };
 
 
+  // In order to filter data
+  // start with original data json object
+  // 
+  // filter the ones that are
+  
   
   const handleWorkButtonClick = () => {
     console.info('You clicked the Chip.');
     if (currentWorkVariant === 'outlined') {
       setCurrentWorkVariant('contained');
       //console.log(`before ${lifeDataEvents.length}`);
-      lifeDataEvents = lifeDataEvents.filter((event) => event.category != 'work');
+      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'work');
       setEvents(lifeDataEvents);
+
       //console.log(`after ${lifeDataEvents.length}`);
     }
     else {
       setCurrentWorkVariant('outlined');
+      updateDeleteIcon();
     }
   };
 
@@ -91,11 +119,13 @@ function App() {
     console.info('You clicked the Chip.');
     if (currentLifeVariant === 'outlined') {
       setCurrentLifeVariant('contained');
-      lifeDataEvents = lifeDataEvents.filter((event) => event.category != 'personal');
+      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'personal');
       setEvents(lifeDataEvents);
+      updateDeleteIcon();
     }
     else {
       setCurrentLifeVariant('outlined');
+      updateDeleteIcon();
     }
   };
 
@@ -103,7 +133,7 @@ function App() {
     console.info('You clicked the Chip.');
     if (currentSchoolVariant === 'outlined') {
       setCurrentSchoolVariant('contained');
-      lifeDataEvents = lifeDataEvents.filter((event) => event.category != 'personal');
+      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'personal');
       setEvents(lifeDataEvents);
     }
     else {
@@ -124,7 +154,10 @@ function App() {
                 label="Life" 
                 variant={currentLifeVariant}
                 color="primary"
-                onClick={handleLifeButtonClick} 
+                onClick={handleLifeButtonClick}
+                onDelete={updateDeleteIcon}
+                //{...clicked ? '/>' : deleteIcon =  <DoneIcon/>/>  }
+                deleteIcon={clicked ? true : undefined }
           />
           <Chip icon={<WorkRounded/>} 
                 label="Work" 
