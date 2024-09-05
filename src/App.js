@@ -26,13 +26,19 @@ import DeleteIcon from '@mui/icons-material/Delete';
   
 function App() {
   let lifeDataEvents = lifeData.events;
+  let uniqueDataCategories = lifeDataEvents.map(item => item.category).filter((value, index, self) =>
+    self.indexOf(value) === index);
   let updatedLifeDataEvents = []
   const [events, setEvents] = useState(lifeDataEvents);
   const [currentWorkVariant, setCurrentWorkVariant] = useState('contained');
   //const [currentButtonVariant, setCurrentButtonVariant] = useState('');
   const [currentSchoolVariant, setCurrentSchoolVariant] = useState('contained');
-  const [currentLifeVariant, setCurrentLifeVariant] = useState('contained');
+  const [currentVariant, setCurrentVariant] = useState('contained');
+  const [chipVariants, setChipVariants] = useState({});
   const [clicked, setClicked] = useState(true);
+  //const [clickedChip, clickedChip] = useState(0);
+  const [chips, setChips] = useState([false, false, false]);
+    
 
 
   
@@ -77,19 +83,34 @@ function App() {
     // },
     
   });
-  
+  const getICon = (item) => {
+    switch (item) {
+        case "school":
+            return <SchoolRounded/> 
+
+        case "work":
+            return <WorkRounded/>
+        default:
+            return <StarRateRounded/>
+
+    }
+  }
+
   const updateDeleteIcon = () => {
     console.log(clicked);
     if (clicked === true){
-      return false;
       console.log("here")
+      setClicked(!clicked)
+      return null;
+      
     } else {
-      setClicked(!clicked);
+      //setClicked(!clicked);
     }
   };
 
   const updateEventsList = () => {
-
+      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'work');
+      setEvents(lifeDataEvents);
   };
 
 
@@ -98,36 +119,49 @@ function App() {
   // 
   // filter the ones that are
   
-  
-  const handleWorkButtonClick = () => {
-    console.info('You clicked the Chip.');
-    if (currentWorkVariant === 'outlined') {
-      setCurrentWorkVariant('contained');
-      //console.log(`before ${lifeDataEvents.length}`);
-      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'work');
-      setEvents(lifeDataEvents);
-
-      //console.log(`after ${lifeDataEvents.length}`);
-    }
-    else {
-      setCurrentWorkVariant('outlined');
-      updateDeleteIcon();
-    }
-  };
-
   const handleLifeButtonClick = () => {
-    console.info('You clicked the Chip.');
-    if (currentLifeVariant === 'outlined') {
-      setCurrentLifeVariant('contained');
+    if (currentVariant === 'outlined') {
+      setCurrentVariant('contained');
       lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'personal');
       setEvents(lifeDataEvents);
       updateDeleteIcon();
     }
     else {
-      setCurrentLifeVariant('outlined');
+      setCurrentVariant('outlined');
       updateDeleteIcon();
     }
   };
+
+  const handleButtonClick = (index) => () => {
+    console.info('You clicked the Chip.');
+    //console.log(index, chips[index], chips);
+    const nextChips = chips.map((i) => {
+      console.log("entered map", i, index);
+        if (i === index) {
+          console.log("i === index", i, index);
+          // Increment the clicked counter
+          return !chips[i];
+        } else {
+          console.log("else", i, index);
+          // The rest haven't changed
+          return chips[i];
+        }
+      });
+      setChips(nextChips);
+    //setClicked(!clicked);
+    //onsole.log(index);
+    // if (currentVariant === 'outlined') {
+    //   setCurrentVariant('contained');
+    //   lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'personal');
+    //   setEvents(lifeDataEvents);
+    //   updateDeleteIcon();
+    // }
+    // else {
+    //   setCurrentVariant('outlined');
+    //   updateDeleteIcon();
+    // }
+  };
+
 
   const handleSchoolButtonClick = () => {
     console.info('You clicked the Chip.');
@@ -150,27 +184,14 @@ function App() {
       </header>
       <div className="Main">
         <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
-          <Chip icon={<StarRateRounded/>} 
-                label="Life" 
-                variant={currentLifeVariant}
-                color="primary"
-                onClick={handleLifeButtonClick}
-                onDelete={updateDeleteIcon}
-                //{...clicked ? '/>' : deleteIcon =  <DoneIcon/>/>  }
-                deleteIcon={clicked ? true : undefined }
-          />
-          <Chip icon={<WorkRounded/>} 
-                label="Work" 
-                variant={currentWorkVariant}
-                color="primary"
-                onClick={handleWorkButtonClick} 
-          />
-          <Chip icon={<SchoolRounded/>} 
-                label="School" 
-                variant={currentSchoolVariant}
-                color="primary"
-                onClick={handleSchoolButtonClick} 
-          />
+        {uniqueDataCategories.map((item,index) => <Chip key={index} 
+                                          icon={getICon(uniqueDataCategories[index])}
+                                          color="primary" 
+                                          label={uniqueDataCategories[index].charAt(0).toUpperCase() + uniqueDataCategories[index].slice(1)} 
+                                          variant={chips[index] ? "contained" : "outlined"} 
+                                          onClick={handleButtonClick(index)}
+                                    />)}
+
         </Stack>
         <div className="LifePathWrapper">
           <div className="event-list">
@@ -182,8 +203,8 @@ function App() {
   
     </ThemeProvider>
   );
-}
 
+}
 
 //Icon by <a href="https://freeicons.io/profile/3">freeicons</a> on <a href="https://freeicons.io">freeicons.io</a>
     
