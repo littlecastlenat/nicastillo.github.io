@@ -79,10 +79,7 @@ const LifeEvent = (props) => {
         <div style={modalStyle} className={classes.paper}>
           <h2 id="simple-modal-title">{props.details.title}</h2>
           <div className="modalWrapper">
-            
-
             <img src={props.details.imagePath} alt={props.details.title}/>
-
             <p id="simple-modal-description">
             {props.details.description}
             </p>
@@ -102,7 +99,7 @@ const LifeEvent = (props) => {
             </span>
 
             <Modal
-                animation={false}
+                animation={"false"}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="simple-modal-title"

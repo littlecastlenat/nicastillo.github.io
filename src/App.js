@@ -12,6 +12,7 @@ import { createTheme } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Container from '@mui/material/Container';
 
 
 //todo aug 19- filter/unfilter based on chips selected
@@ -30,7 +31,7 @@ function App() {
     self.indexOf(value) === index);
   const [events, setEvents] = useState(lifeDataEvents);
   //const [clickedChip, clickedChip] = useState(0);
-  const [chips, setChips] = useState([true, false, true]);
+  const [chips, setChips] = useState([true, true, true]);
   
   useEffect(() => {
     // Update the document title using the browser API
@@ -141,7 +142,8 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
-    {<div className="App">
+    {
+      <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
