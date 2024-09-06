@@ -1,96 +1,137 @@
 {
     "events": [
         {
-            "title": "Born",
-            "category": "school",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "title": "1989: Born",
+            "category": "personal",
+            "date": "20/07/1989",
+            "description": "Birthday 🧁",
             "imagePath": "../images/forest.jpeg",
             "level": "Major"
         },
         {
-            "title": "Pre-school",
+            "title": "1991-2006: School",
             "category": "school",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Primary",
-            "category": "personal",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Secondary",
-            "category": "personal",
+            "startDate": "20/07/1989",
+            "endDate": "20/07/1989",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "level": "Minor"
         },
         {
             "title": "First Concert",
             "category": "personal",
+            "startDate": "22/04/2004",
+            "endDate": "22/04/2004",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "level": "Minor"
         },
         {
-            "title": "High School",
+            "title": "Summer vacation Nevada",
             "category": "personal",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "University",
-            "category": "personal",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "First Iternational Trip",
-            "category": "personal",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Accepted at uOttawa",
-            "category": "work",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Scholarship",
-            "category": "personal",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Move to Canada",
-            "category": "work",
+            "startDate": "20/07/1989",
+            "endDate": "20/07/1989",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "level": "Minor"
         },
        
         {
-            "title": "Master's Degree",
+            "title": "University",
             "category": "school",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Universidad Autonoma de Nuevo Leon",
+            "level": "Minor"
+        },
+        {
+            "title": "Move to Canada",
+            "category": "personal",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "level": "Minor"
+        },
+        
+        {
+            "title": "Univertiy of Ottawa: Master Program",
+            "category": "school",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "level": "Minor"
         },
         {
             "title": "Intern @ Cydsa",
             "category": "work",
+            "date": "20/07/1989",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "level": "Minor"
         },
         {
             "title": "Klipfolio",
             "category": "work",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "level": "Minor"
         },
         {
-            "title": "Shopify",
+            "title": "Klipfolio: BI Lead",
             "category": "work",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "level": "Minor"
+        },
+        {
+            "title": "Klipfolio: Development Manager",
+            "category": "work",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "level": "Minor"
+        },
+        {
+            "title": "Shopify: Development Manager",
+            "category": "work",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "level": "Minor"
+        },
+        {
+            "title": "Germany",
+            "category": "personal",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "level": "Minor"
+        },
+        {
+            "title": "Philippines",
+            "category": "personal",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "level": "Minor"
+        },
+        {
+            "title": "Shopify: Senior Development Manager",
+            "category": "work",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "level": "Minor"
+        },
+
+        {
+            "title": "To be continued",
+            "category": "personal",
+            "startDate": "20/07/2005",
+            "endDate": "20/07/2011",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "level": "Minor"
         }
+
+
+
     ]
 }
