@@ -28,24 +28,16 @@ function App() {
   let lifeDataEvents = lifeData.events;
   let uniqueDataCategories = lifeDataEvents.map(item => item.category).filter((value, index, self) =>
     self.indexOf(value) === index);
-  let updatedLifeDataEvents = []
   const [events, setEvents] = useState(lifeDataEvents);
-  const [currentWorkVariant, setCurrentWorkVariant] = useState('contained');
-  //const [currentButtonVariant, setCurrentButtonVariant] = useState('');
-  const [currentSchoolVariant, setCurrentSchoolVariant] = useState('contained');
-  const [currentVariant, setCurrentVariant] = useState('contained');
-  const [chipVariants, setChipVariants] = useState({});
-  const [clicked, setClicked] = useState(true);
   //const [clickedChip, clickedChip] = useState(0);
-  const [chips, setChips] = useState([false, false, false]);
-    
-
-
+  const [chips, setChips] = useState([true, false, true]);
   
   useEffect(() => {
     // Update the document title using the browser API
     //document.title = `You clicked ${events} times`;
-  });
+    console.log("loaded");
+    updateEventsList();
+  }, [chips]);
 
   const theme = createTheme({
     typography: {
@@ -87,30 +79,41 @@ function App() {
     switch (item) {
         case "school":
             return <SchoolRounded/> 
-
         case "work":
             return <WorkRounded/>
         default:
             return <StarRateRounded/>
-
     }
   }
 
-  const updateDeleteIcon = () => {
-    console.log(clicked);
-    if (clicked === true){
-      console.log("here")
-      setClicked(!clicked)
-      return null;
+  // const updateDeleteIcon = () => {
+  //   console.log(clicked);
+  //   if (clicked === true){
+  //     console.log("here")
+  //     setClicked(!clicked)
+  //     return null;
       
-    } else {
-      //setClicked(!clicked);
-    }
-  };
+  //   } else {
+  //     //setClicked(!clicked);
+  //   }
+  // };
 
   const updateEventsList = () => {
-      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'work');
-      setEvents(lifeDataEvents);
+    console.log(chips);
+    // get a filtered array only with clicked buttons i.e. uniqueDataCat = [school, life, work] --> [school, life]
+    // filter index when value of index is true?
+    // available data clickedIndex = [false, false, false]
+    
+    let clickedDataCategories = uniqueDataCategories.filter(
+                                                      (clickedCategory, clickedCategoryIndex) => 
+                                                        chips[clickedCategoryIndex]             
+
+                                                         );
+    const nextLifeDataEvents = lifeDataEvents.filter((lifeEvent) => 
+      clickedDataCategories.includes(lifeEvent.category)
+    );
+    setEvents(nextLifeDataEvents);
+    
   };
 
 
@@ -119,63 +122,23 @@ function App() {
   // 
   // filter the ones that are
   
-  const handleLifeButtonClick = () => {
-    if (currentVariant === 'outlined') {
-      setCurrentVariant('contained');
-      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'personal');
-      setEvents(lifeDataEvents);
-      updateDeleteIcon();
-    }
-    else {
-      setCurrentVariant('outlined');
-      updateDeleteIcon();
-    }
-  };
+  const handleButtonClick = (clickedIndex) => async () => {
+    console.log("before", chips)
+    const nextChips = chips.map((item,i) => {
 
-  const handleButtonClick = (index) => () => {
-    console.info('You clicked the Chip.');
-    //console.log(index, chips[index], chips);
-    const nextChips = chips.map((i) => {
-      console.log("entered map", i, index);
-        if (i === index) {
-          console.log("i === index", i, index);
-          // Increment the clicked counter
+        if (i === clickedIndex) {
           return !chips[i];
         } else {
-          console.log("else", i, index);
           // The rest haven't changed
           return chips[i];
         }
       });
+      
       setChips(nextChips);
-    //setClicked(!clicked);
-    //onsole.log(index);
-    // if (currentVariant === 'outlined') {
-    //   setCurrentVariant('contained');
-    //   lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'personal');
-    //   setEvents(lifeDataEvents);
-    //   updateDeleteIcon();
-    // }
-    // else {
-    //   setCurrentVariant('outlined');
-    //   updateDeleteIcon();
-    // }
+      console.log("after", nextChips)
+      updateEventsList();
   };
-
-
-  const handleSchoolButtonClick = () => {
-    console.info('You clicked the Chip.');
-    if (currentSchoolVariant === 'outlined') {
-      setCurrentSchoolVariant('contained');
-      lifeDataEvents = lifeDataEvents.filter((event) => event.category !== 'personal');
-      setEvents(lifeDataEvents);
-    }
-    else {
-      setCurrentSchoolVariant('outlined');
-    }
-  };
-
-
+  
   return (
     <ThemeProvider theme={theme}>
     {<div className="App">
@@ -188,7 +151,7 @@ function App() {
                                           icon={getICon(uniqueDataCategories[index])}
                                           color="primary" 
                                           label={uniqueDataCategories[index].charAt(0).toUpperCase() + uniqueDataCategories[index].slice(1)} 
-                                          variant={chips[index] ? "contained" : "outlined"} 
+                                          variant={Boolean(chips[index]) ? "contained" : "outlined"} 
                                           onClick={handleButtonClick(index)}
                                     />)}
 

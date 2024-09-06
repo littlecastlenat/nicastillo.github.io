@@ -102,6 +102,7 @@ const LifeEvent = (props) => {
             </span>
 
             <Modal
+                animation={false}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="simple-modal-title"
