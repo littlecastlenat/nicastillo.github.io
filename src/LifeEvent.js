@@ -6,6 +6,10 @@ import IconButton from '@material-ui/core/IconButton';
 
 import './LifeEvent.css';
 
+
+//todo update this whole mess to NOT use style components and just use native MUI
+
+
 const LifeEvent = (props) => {
     function getModalStyle() {
         const top = 50;
@@ -75,10 +79,7 @@ const LifeEvent = (props) => {
         <div style={modalStyle} className={classes.paper}>
           <h2 id="simple-modal-title">{props.details.title}</h2>
           <div className="modalWrapper">
-            
-
             <img src={props.details.imagePath} alt={props.details.title}/>
-
             <p id="simple-modal-description">
             {props.details.description}
             </p>
@@ -98,6 +99,7 @@ const LifeEvent = (props) => {
             </span>
 
             <Modal
+                animation={"false"}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="simple-modal-title"
