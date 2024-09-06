@@ -13,7 +13,7 @@ import { purple } from '@mui/material/colors';
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Container from '@mui/material/Container';
-
+import Box from '@mui/material/Box';
 
 //todo aug 19- filter/unfilter based on chips selected
 
@@ -142,33 +142,35 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
-    {
       <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <div className="Main">
-        <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
-        {uniqueDataCategories.map((item,index) => <Chip key={index} 
-                                          icon={getICon(uniqueDataCategories[index])}
-                                          color="primary" 
-                                          label={uniqueDataCategories[index].charAt(0).toUpperCase() + uniqueDataCategories[index].slice(1)} 
-                                          variant={Boolean(chips[index]) ? "contained" : "outlined"} 
-                                          onClick={handleButtonClick(index)}
-                                    />)}
-
-        </Stack>
-        <div className="LifePathWrapper">
-          <div className="event-list">
-            {events.map((item,index) => <LifeEvent key={index} details={item} />)}
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
+        <div className="Main">
+          <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+            {uniqueDataCategories.map((item,index) => 
+              <Chip key={index} 
+                icon={getICon(uniqueDataCategories[index])}
+                color="primary" 
+                label={uniqueDataCategories[index].charAt(0).toUpperCase() + uniqueDataCategories[index].slice(1)} 
+                variant={Boolean(chips[index]) ? "contained" : "outlined"} 
+                onClick={handleButtonClick(index)}
+              />
+            )}
+          </Stack>
+          <div className="LifePathWrapper">
+            <div className="event-list">
+              {events.map((item,index) => 
+                <LifeEvent key={index} 
+                  details={item} 
+                />
+              )}
             </div>
+          </div>
         </div>
       </div>
-    </div>}
-  
     </ThemeProvider>
   );
-
 }
 
 //Icon by <a href="https://freeicons.io/profile/3">freeicons</a> on <a href="https://freeicons.io">freeicons.io</a>
