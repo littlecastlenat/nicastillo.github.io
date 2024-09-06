@@ -1,0 +1,46 @@
+name: Dependabot auto-merge
+on: pull_request_target
+
+jobs:
+  approve-dependabot-pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@main
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Approve and comment 'woo' Dependabot PRs for patch versions
+        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.pulls.createReview({
+              pull_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              event: 'APPROVE',
+              body: '🚀',
+            })
+      - name: Merge PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.pulls.merge({
+              pull_number: context.issue.number,
+              merge_method: 'merge',
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+      - name: Adds auto-merged label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: ['auto-merged']
+            })
+
