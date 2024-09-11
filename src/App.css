@@ -1,10 +1,7 @@
-
-
 .App-logo {
-  height: 50px;
   pointer-events: none;
-  padding: 20px;
-  display:flex;
+  padding: 10px;
+  display: flex;
   align-items: center;
 }
 
@@ -22,29 +19,82 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 1px;
 }
 
 
-.Main{
-  background-color: #f8f8ff;
+.Main {
+
+  background-color: #dfdbe5;
   display: flex;
   flex-direction: column;
   color: #615B7D;
   padding: 20px 0 20px 0;
 }
 
+body {}
+
 .LifePathWrapper {
-  margin:0 auto;
+  margin: 0 auto;
 }
+
 .LifePathWrapper .event-list {
   padding: 10px 10px;
   margin-left: 50px;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+h3 span {
+
+  opacity: 0;
+  animation: move-text 0.75s forwards;
+  font-size: 28px;
+}
+
+header span {
+  position: relative;
+  opacity: 0;
+  animation: move-text 0.75s forwards;
+}
+
+@keyframes move-text {
+  0% {
+    bottom: -0.2em;
+    opacity: 1;
+  }
+
+  50% {
+    bottom: 0.2em;
+  }
+
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+h1 .blink-cursor {
+  animation: blinker 1.2s step-start infinite;
+  /**
+  animation-name: move-text, blinker;
+  /* animation-duration: 2000ms, 1000ms; 
+  animation-delay: 0ms, 2000ms; /* add this 
+  animation-timing-function: ease-in, ease-out;
+  animation-iteration-count: 1, 1;
+  */
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
   }
 }
