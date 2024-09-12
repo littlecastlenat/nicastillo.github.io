@@ -53,11 +53,12 @@ function AppHeader() {
                         </Typography>
                     );
                 })}
-                <Typography sx={{ 
-                    animation: `${moveText} 0.75s forwards`, 
-                    position: "relative", 
-                    display: "inline-block" }}>
-                        _
+                <Typography sx={{
+                    animation: `${moveText} 0.75s forwards`,
+                    position: "relative",
+                    display: "inline-block"
+                }}>
+                    _
                 </Typography>
             </Box>
         </Box>

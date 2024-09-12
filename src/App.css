@@ -1,13 +1,5 @@
 
-.LifePathWrapper {
-  margin: 0 auto;
- 
-}
 
-.LifePathWrapper .event-list {
-  padding: 10px 10px;
-  margin-left: 15%;
-}
 
 @keyframes App-logo-spin {
   from {

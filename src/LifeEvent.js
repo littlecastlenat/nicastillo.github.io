@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Box, Typography, IconButton, Stack, createTheme } from '@mui/material';
-import { StarRateRounded, WorkRounded, SchoolRounded } from '@mui/icons-material';
+import { StarRateRounded, LaptopMacRounded, SchoolRounded } from '@mui/icons-material';
 
 const LifeEvent = ({ details, isLast }) => {
     const theme = createTheme({
@@ -70,7 +70,7 @@ const LifeEvent = ({ details, isLast }) => {
             case 'school':
                 return <SchoolRounded sx={{ color: '#dfdbe5' }} />;
             case 'work':
-                return <WorkRounded sx={{ color: '#dfdbe5' }} />;
+                return <LaptopMacRounded sx={{ color: '#dfdbe5' }} />;
             default:
                 return <StarRateRounded sx={{ color: '#dfdbe5' }} />;
         }
@@ -92,7 +92,10 @@ const LifeEvent = ({ details, isLast }) => {
             <Typography variant="h6" id="simple-modal-title">
                 {details.title}
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center' }}>
                 <img src={details.imagePath} alt={details.title} style={{ maxWidth: '100%' }} />
                 <Typography id="simple-modal-description" sx={{ mt: 2 }}>
                     {details.description}
@@ -109,7 +112,9 @@ const LifeEvent = ({ details, isLast }) => {
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
-            mr: 10 }}>
+            left: '20%',
+            label:"LifeEventWrapper" 
+        }}>
             {/* Conditionally render lifeline if it's not the last event */}
             {!isLast && (
                 <Box

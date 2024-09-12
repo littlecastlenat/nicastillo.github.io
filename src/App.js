@@ -4,7 +4,7 @@ import lifeData from './data/lifedata.json';
 import React, { useState, useEffect } from 'react';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import { StarRateRounded, WorkRounded, SchoolRounded } from '@mui/icons-material';
+import { StarRateRounded, LaptopMacRounded, SchoolRounded } from '@mui/icons-material';
 import LifeEvent from './LifeEvent';
 import AppMenuBar from './AppMenuBar';
 import AppFooter from './AppFooter';
@@ -43,7 +43,7 @@ function App() {
   let uniqueDataCategories = lifeDataEvents.map(item => item.category).filter((value, index, self) =>
     self.indexOf(value) === index);
   const [events, setEvents] = useState(lifeDataEvents);
-  const [chips, setChips] = useState([true, true, true]);
+  const [chips, setChips] = useState([false, true, true]);
 
 
   useEffect(() => {
@@ -92,7 +92,7 @@ function App() {
       case "school":
         return <SchoolRounded />
       case "work":
-        return <WorkRounded />
+        return <LaptopMacRounded />
       default:
         return <StarRateRounded />
     }
@@ -183,6 +183,7 @@ function App() {
                 label={uniqueDataCategories[index].charAt(0).toUpperCase() + uniqueDataCategories[index].slice(1)}
                 variant={Boolean(chips[index]) ? "contained" : "outlined"}
                 onClick={handleButtonClick(index)}
+                sx={{p:2}}
               />
             )}
           </Stack>
@@ -191,11 +192,13 @@ function App() {
              display: 'flex',
              justifyContent: 'center',
              alignItems: 'center',
-             flexDirection: 'column'
+             flexDirection: 'column',
+             name:'Main TimelineContainer>'
 
           }}>
-            <Box className="event-list" sx={{
+            <Box sx={{
                padding: '10px 10px',
+
                
             }}>
               {events.map((item, index) =>
