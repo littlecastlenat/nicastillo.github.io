@@ -32,6 +32,9 @@ import Box from '@mui/material/Box';
  * Accent Purple - #796388
  * Accent purple (2?) - #615B7D
  * 
+ * Old colors
+ * Darkest purple #262329
+ * Light purple #635d69
  * 
 */
 
@@ -97,9 +100,17 @@ function App() {
 
   const updateEventsList = () => {
     console.log(chips);
-    // get a filtered array only with clicked buttons i.e. uniqueDataCat = [school, life, work] --> [school, life]
-    // filter index when value of index is true?
-    // available data clickedIndex = [false, false, false]
+    /**  
+     * 1. Filter the uniqueDataCategories array to only contain the categories 
+     * which have enabled via the chip component
+     * i.e. uniqueDataCat = [school, life, work] should be filtered to 
+     * -> [school, life] if the school and life chips have been enabled/clicked
+     * the state of a chip is stored in the chips[] variable
+     * so the conditional of filter should be on the value of the chips[x] 
+     * 
+     * 2. Filter events data object array based on whether the 
+     * category exists in the previous array */
+    
 
     let clickedDataCategories = uniqueDataCategories.filter(
       (clickedCategory, clickedCategoryIndex) =>
@@ -164,7 +175,5 @@ function App() {
     </ThemeProvider>
   );
 }
-
-//Icon by <a href="https://freeicons.io/profile/3">freeicons</a> on <a href="https://freeicons.io">freeicons.io</a>
 
 export default App;
