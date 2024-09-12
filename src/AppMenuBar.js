@@ -12,12 +12,12 @@ const pages = ['Timeline', 'Github', 'LinkedIn'];
 function AppMenuBar() {
   const preventDefault = (event) => event.preventDefault();
   return (
-    <Box sx={{ background: "#3e3346", color: 'white', display: { xs: 'grid', md: 'flex' } ,
+    <Box sx={{ background: "#3e3346", color: 'white', display: { xs: 'flex', md: 'flex' } ,
     alignItems:"center" }}>
       <Box
         sx={{
-          my: 2, mx: 2, 
-          display: { xs: 'none', md: 'flex' }
+          my: 2, mx: 1, 
+          display: { xs: 'flex', md: 'flex' }
         }}
       />
       
