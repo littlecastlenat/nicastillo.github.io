@@ -110,7 +110,7 @@ function App() {
      * 
      * 2. Filter events data object array based on whether the 
      * category exists in the previous array */
-    
+
 
     let clickedDataCategories = uniqueDataCategories.filter(
       (clickedCategory, clickedCategoryIndex) =>
@@ -142,13 +142,32 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <header className="App-header">
-          <AppHeader></AppHeader>
+      <Box>
+        <header>
+          <Box sx={{
+            backgroundColor: '#796388',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 'calc(10 + 2vmin)',
+            color: 'white',
+            padding: 1
+          }}>
 
+            <AppHeader />
+
+          </Box>
         </header>
+
         <AppMenuBar></AppMenuBar>
-        <div className="Main">
+        <Box className="Main" sx={{
+          backgroundColor: '#dfdbe5',
+          display: 'flex',
+          flexDirection: 'column',
+          color: '#615B7D',
+          padding: '20px 0 20px 0'
+        }}>
           <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
             {uniqueDataCategories.map((item, index) =>
               <Chip key={index}
@@ -169,9 +188,9 @@ function App() {
               )}
             </div>
           </div>
-        </div>
+        </Box>
         <AppFooter />
-      </div>
+      </Box>
     </ThemeProvider>
   );
 }
