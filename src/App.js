@@ -161,6 +161,8 @@ function App() {
         </header>
 
         <AppMenuBar></AppMenuBar>
+
+        {/**Main Body Container */}
         <Box sx={{
           backgroundColor: '#dfdbe5',
           display: 'flex',
@@ -168,7 +170,12 @@ function App() {
           color: '#615B7D',
           padding: '20px 0 20px 0'
         }}>
-          <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+          {/** Stack Container with Chips  */}
+          <Stack direction="row"
+            spacing={1}
+            alignItems="center"
+            justifyContent="center"
+          >
             {uniqueDataCategories.map((item, index) =>
               <Chip key={index}
                 icon={getICon(uniqueDataCategories[index])}
@@ -179,11 +186,22 @@ function App() {
               />
             )}
           </Stack>
-          <Box className="LifePathWrapper">
-            <Box className="event-list">
+          {/**Timeline Container */}
+          <Box sx={{
+             display: 'flex',
+             justifyContent: 'center',
+             alignItems: 'center',
+             flexDirection: 'column'
+
+          }}>
+            <Box className="event-list" sx={{
+               padding: '10px 10px',
+               
+            }}>
               {events.map((item, index) =>
                 <LifeEvent key={index}
                   details={item}
+                  isLast={index === events.length - 1}
                 />
               )}
             </Box>

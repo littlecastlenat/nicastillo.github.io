@@ -1,20 +1,49 @@
 import React from 'react';
-import {Modal} from '@material-ui/core';
-import { StarRateRounded, WorkRounded, SchoolRounded} from '@material-ui/icons';
-import {withStyles, makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
+import { Modal, Box, Typography, IconButton, Stack, createTheme } from '@mui/material';
+import { StarRateRounded, WorkRounded, SchoolRounded } from '@mui/icons-material';
 
-import './LifeEvent.css';
-
-
-//todo update this whole mess to NOT use style components and just use native MUI
-
-
-const LifeEvent = (props) => {
+const LifeEvent = ({ details, isLast }) => {
+    const theme = createTheme({
+        typography: {
+          fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+          ].join(','),
+        },
+        palette: {
+          primary: {
+            main: '#796388',
+          },
+          secondary: {
+            main: '#728863',
+          },
+        },
+        // chip: {
+        //   margin: theme.spacing(0.5),
+        //   "& .MuiChip-deleteIcon": {
+        //     display: "none"
+        //   },
+        //   "&:hover": {
+        //     "& .MuiChip-deleteIcon": {
+        //       display: "block"
+        //     }
+        //   }
+        // },
+    
+      });
+    // Function to calculate modal position
     function getModalStyle() {
         const top = 50;
         const left = 50;
-      
+
         return {
             top: `${top}%`,
             left: `${left}%`,
@@ -22,37 +51,11 @@ const LifeEvent = (props) => {
         };
     }
 
-    const StyledButton = withStyles({
-        root: {
-          background: '#796388',
-          '&:hover': {
-            background: "#615B7D",
-         },
-        },
-        label: {
-          textTransform: 'capitalize',
-        },
-      })(IconButton);
- 
-    const useStyles = makeStyles((theme) => ({
-        paper: {
-          position: 'absolute',
-          width: 400,
-          backgroundColor: theme.palette.background.paper,
-          border: '2px solid #000',
-          boxShadow: theme.shadows[5],
-          padding: theme.spacing(2, 4, 3),
-        },
-        small: {
-            width: 30,
-            height: 30,
-        }
-    }));
-        
-    const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
+    // State hooks
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+
+    // Handlers for opening and closing the modal
     const handleOpen = () => {
         setOpen(true);
     };
@@ -61,45 +64,114 @@ const LifeEvent = (props) => {
         setOpen(false);
     };
 
-    const getICon = (eventType) => {
+    // Function to get the correct icon based on the event type
+    const getIcon = (eventType) => {
         switch (eventType) {
-            
-            case "school":
-                return <SchoolRounded style={{ color: "#dfdbe5" }}></SchoolRounded>;
-
-            case "work":
-                return <WorkRounded style={{ color: "#dfdbe5" }}></WorkRounded>;
+            case 'school':
+                return <SchoolRounded sx={{ color: '#dfdbe5' }} />;
+            case 'work':
+                return <WorkRounded sx={{ color: '#dfdbe5' }} />;
             default:
-                return <StarRateRounded style={{ color: "#dfdbe5" }}></StarRateRounded>;
-
+                return <StarRateRounded sx={{ color: '#dfdbe5' }} />;
         }
-    }
+    };
 
+    // Modal body content
     const modalBody = (
-        <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">{props.details.title}</h2>
-          <div className="modalWrapper">
-            <img src={props.details.imagePath} alt={props.details.title}/>
-            <p id="simple-modal-description">
-            {props.details.description}
-            </p>
-            <span>Next</span>
-          </div>
-        </div>
-      );
-    return (
-        <div className="event">
-            <div className="event-lifeline"></div>
-            <StyledButton size="small">
-                {getICon(props.details.category)}
-            </StyledButton>
-            
-            
-            <span className="content" onClick={handleOpen}>{props.details.title}
-            </span>
+        <Box
+            sx={{
+                position: 'absolute',
+                width: 400,
+                bgcolor: 'background.paper',
+                border: '2px solid #000',
+                boxShadow: 24,
+                p: 3,
+                ...modalStyle,
+            }}
+        >
+            <Typography variant="h6" id="simple-modal-title">
+                {details.title}
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <img src={details.imagePath} alt={details.title} style={{ maxWidth: '100%' }} />
+                <Typography id="simple-modal-description" sx={{ mt: 2 }}>
+                    {details.description}
+                </Typography>
+                <Typography sx={{ mt: 1, color: 'gray' }}>Next</Typography>
+            </Box>
+        </Box>
+    );
 
+    return (
+        <Box sx={{ 
+            padding: '10px 0',
+            
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            mr: 10 }}>
+            {/* Conditionally render lifeline if it's not the last event */}
+            {!isLast && (
+                <Box
+                    sx={{
+                        height: '100px',
+                        backgroundColor: '#796388',
+                        mt: 4.5,
+                        borderLeft: '3px solid #796388',
+                        height: '65%',
+                        position: 'absolute',
+                        left: '5%',
+                        top: 5,
+                        
+                    }}
+                />
+            )}
+
+            
+            <Box direction="row" 
+                    spacing={1}
+                    justifyContent={'flex-start'} 
+                    sx={{
+                        alignItems:"center",
+                        ml:'1',
+                        
+                        
+                        
+                    }}
+            >
+                {/* Icon button */}
+            <IconButton
+                size="small"
+                onClick={handleOpen}
+                color="primary"
+                sx={{
+
+                    backgroundColor: '#796388',
+                    '&:hover': { backgroundColor: '#615B7D' },
+                    position: 'relative',
+                    
+                }}
+            >
+                {getIcon(details.category)}
+            </IconButton>
+
+            {/* Title */}
+            <Typography
+                onClick={handleOpen}
+                sx={{
+                    cursor: 'pointer',
+                    display: 'inline',
+                    mt: 1,
+                    ml: 1,
+                    textAlign: 'center',
+                    color: '#796388',
+                }}
+            >
+                {details.title}
+            </Typography>
+            </Box>
+            {/* Modal */}
             <Modal
-                animation={"false"}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="simple-modal-title"
@@ -107,11 +179,8 @@ const LifeEvent = (props) => {
             >
                 {modalBody}
             </Modal>
-
-        </div>
-
-
+        </Box>
     );
-}
+};
 
 export default LifeEvent;
