@@ -65,12 +65,12 @@ const LifeEvent = (props) => {
         switch (eventType) {
             
             case "school":
-                return <SchoolRounded style={{ color: "#f8f8ff" }}></SchoolRounded>;
+                return <SchoolRounded style={{ color: "#dfdbe5" }}></SchoolRounded>;
 
             case "work":
-                return <WorkRounded style={{ color: "#f8f8ff" }}></WorkRounded>;
+                return <WorkRounded style={{ color: "#dfdbe5" }}></WorkRounded>;
             default:
-                return <StarRateRounded style={{ color: "#f8f8ff" }}></StarRateRounded>;
+                return <StarRateRounded style={{ color: "#dfdbe5" }}></StarRateRounded>;
 
         }
     }
