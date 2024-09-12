@@ -161,7 +161,7 @@ function App() {
         </header>
 
         <AppMenuBar></AppMenuBar>
-        <Box className="Main" sx={{
+        <Box sx={{
           backgroundColor: '#dfdbe5',
           display: 'flex',
           flexDirection: 'column',
@@ -179,15 +179,15 @@ function App() {
               />
             )}
           </Stack>
-          <div className="LifePathWrapper">
-            <div className="event-list">
+          <Box className="LifePathWrapper">
+            <Box className="event-list">
               {events.map((item, index) =>
                 <LifeEvent key={index}
                   details={item}
                 />
               )}
-            </div>
-          </div>
+            </Box>
+          </Box>
         </Box>
         <AppFooter />
       </Box>

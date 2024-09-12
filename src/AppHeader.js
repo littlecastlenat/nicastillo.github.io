@@ -30,7 +30,7 @@ function AppHeader() {
                     width: 80,
                     display: { xs: 'none', md: 'flex' },
                 }}
-                alt="littlecastle"
+                alt="Castle"
                 src={littlecastle}
             />
             <Box>
@@ -48,12 +48,17 @@ function AppHeader() {
                             variant="h4"
                             aria-hidden="true"
                             key={index}
-                        > 
+                        >
                             {char === " " ? "\u00A0" : char}
                         </Typography>
                     );
                 })}
-                <span className="blink-cursor">_</span>
+                <Typography sx={{ 
+                    animation: `${moveText} 0.75s forwards`, 
+                    position: "relative", 
+                    display: "inline-block" }}>
+                        _
+                </Typography>
             </Box>
         </Box>
     );
