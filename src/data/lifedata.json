@@ -1,137 +1,134 @@
 {
     "events": [
-        {
-            "title": "1989: Born",
-            "category": "personal",
-            "date": "20/07/1989",
-            "description": "Birthday 🧁",
-            "imagePath": "../images/forest.jpeg",
-            "level": "Major"
-        },
-        {
-            "title": "1991-2006: School",
-            "category": "school",
-            "startDate": "20/07/1989",
-            "endDate": "20/07/1989",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "First Concert",
-            "category": "personal",
-            "startDate": "22/04/2004",
-            "endDate": "22/04/2004",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Summer vacation Nevada",
-            "category": "personal",
-            "startDate": "20/07/1989",
-            "endDate": "20/07/1989",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-       
-        {
-            "title": "University",
-            "category": "school",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Universidad Autonoma de Nuevo Leon",
-            "level": "Minor"
-        },
-        {
-            "title": "Move to Canada",
-            "category": "personal",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        
-        {
-            "title": "Univertiy of Ottawa: Master Program",
-            "category": "school",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Intern @ Cydsa",
-            "category": "work",
-            "date": "20/07/1989",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Klipfolio",
-            "category": "work",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Klipfolio: BI Lead",
-            "category": "work",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Klipfolio: Development Manager",
-            "category": "work",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Shopify: Development Manager",
-            "category": "work",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Germany",
-            "category": "personal",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Philippines",
-            "category": "personal",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-        {
-            "title": "Shopify: Senior Development Manager",
-            "category": "work",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        },
-
-        {
-            "title": "To be continued",
-            "category": "personal",
-            "startDate": "20/07/2005",
-            "endDate": "20/07/2011",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "level": "Minor"
-        }
-
-
-
+      {
+        "title": "Born",
+        "category": "personal",
+        "startDate": "1989-07-20",
+        "endDate": "1989-07-20",
+        "description": "Birthday 🧁",
+        "imagePath": "../images/forest.jpeg",
+        "level": "Major"
+      },
+      {
+        "title": "School",
+        "category": "school",
+        "startDate": "1991-07-20",
+        "endDate": "2006-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "First Concert",
+        "category": "personal",
+        "startDate": "2004-04-22",
+        "endDate": "2004-04-22",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Summer vacation Nevada",
+        "category": "personal",
+        "startDate": "1989-07-20",
+        "endDate": "1989-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "University",
+        "category": "school",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Universidad Autonoma de Nuevo Leon",
+        "level": "Minor"
+      },
+      {
+        "title": "Move to Canada",
+        "category": "personal",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "University of Ottawa: Master Program",
+        "category": "school",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Intern @ Cydsa",
+        "category": "work",
+        "startDate": "1989-07-20",
+        "endDate": "1989-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Klipfolio",
+        "category": "work",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Klipfolio: BI Lead",
+        "category": "work",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Klipfolio: Development Manager",
+        "category": "work",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Shopify: Development Manager",
+        "category": "work",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Germany",
+        "category": "personal",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Philippines",
+        "category": "personal",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "Shopify: Senior Development Manager",
+        "category": "work",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      },
+      {
+        "title": "To be continued",
+        "category": "personal",
+        "startDate": "2005-07-20",
+        "endDate": "2011-07-20",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "level": "Minor"
+      }
     ]
-}
+  }
+  

@@ -14,18 +14,22 @@ function AppFooter() {
         alignItems: 'center',
         justifyContent: 'center',
         height: '80', // Adjust height as needed
-        padding: 2 // Optional padding
+        padding: 2, // Optional padding
+        position: 'sticky',
+        bottom: 0,
+            
       }}
     >
       <Typography>© Natalia Castillo</Typography>
       <Link 
         color='#fff'
-        href="https://www.flaticon.com/free-icons/fortress" 
+        href="https://www.flaticon.com/free-icons/castle" 
         title="fortress icons"
         underline='always'
+        target='_blank'
         sx={{ mt: 1 }} // Margin-top for spacing between text and link
       >
-        Fortress icon created by Freepik - Flaticon
+        Castle icon created by Freepik - Flaticon
       </Link>
     </Box>
   );

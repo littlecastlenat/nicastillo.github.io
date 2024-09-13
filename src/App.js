@@ -198,7 +198,9 @@ function App() {
           }}>
             <Box sx={{
                padding: '10px 10px',
-
+               label:"TimelineWrapper",
+               width:'50%',
+               minHeight: 500
                
             }}>
               {events.map((item, index) =>

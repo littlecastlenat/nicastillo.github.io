@@ -40,7 +40,7 @@ const LifeEvent = ({ details, isLast }) => {
     
       });
     // Function to calculate modal position
-    function getModalStyle() {
+    const getModalStyle = () => {
         const top = 50;
         const left = 50;
 
@@ -76,6 +76,18 @@ const LifeEvent = ({ details, isLast }) => {
         }
     };
 
+    const dateFormat = (startDate, endDate) => {
+        const startDateFormat = new Date(startDate);
+        const endDateFormat = new Date(endDate);
+
+        if (startDateFormat.getFullYear() === endDateFormat.getFullYear()){
+            return startDateFormat.getFullYear();
+        }
+        else {
+            return `${startDateFormat.getFullYear()} - ${endDateFormat.getFullYear()} `;
+        }
+    };
+
     // Modal body content
     const modalBody = (
         <Box
@@ -105,32 +117,30 @@ const LifeEvent = ({ details, isLast }) => {
         </Box>
     );
 
+    /* Life Event Wrapper Contains Icon and Typography */
     return (
         <Box sx={{ 
-            padding: '10px 0',
-            
+            padding: '10px 0',   
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
-            left: '20%',
+            left: '40%',
             label:"LifeEventWrapper" 
         }}>
             {/* Conditionally render lifeline if it's not the last event */}
-            {!isLast && (
-                <Box
-                    sx={{
-                        height: '100px',
-                        backgroundColor: '#796388',
-                        mt: 4.5,
-                        borderLeft: '3px solid #796388',
-                        height: '65%',
-                        position: 'absolute',
-                        left: '5%',
-                        top: 5,
-                        
-                    }}
+            <Box
+                sx={{
+                    height: '100px',
+                    backgroundColor: '#796388',
+                    borderLeft: '3px solid #796388',
+                    height: '65%',
+                    position: 'absolute',
+                    left: '2%',
+                    top: 35,
+                    display: isLast ? 'none' : 'inline-block'
+                    
+                }}
                 />
-            )}
 
             
             <Box direction="row" 
@@ -172,7 +182,7 @@ const LifeEvent = ({ details, isLast }) => {
                     color: '#796388',
                 }}
             >
-                {details.title}
+                {dateFormat(details.startDate,details.endDate)} : {details.title}
             </Typography>
             </Box>
             {/* Modal */}
