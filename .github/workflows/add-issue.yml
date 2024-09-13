@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/add-to-project@main
         with:
-          project-url: https://github.com/users/nicastillo/projects/1
+          project-url: https://github.com/users/littlecastlenat/projects/1
           github-token: ${{ secrets.LITTLECASTLE }}
           # labeled: bug, needs-triage
           # label-operator: OR
