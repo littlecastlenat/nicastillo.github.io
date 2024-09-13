@@ -1,6 +1,8 @@
 {
   "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "littlecastlenat Website",
+  "author": "Natalia Castillo",
+
   "icons": [
     {
       "src": "favicon.ico",
