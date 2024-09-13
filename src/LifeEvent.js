@@ -185,9 +185,9 @@ const LifeEvent = ({ details, isLast }) => {
                 {dateFormat(details.startDate,details.endDate)} : {details.title}
             </Typography>
             </Box>
-            {/* Modal */}
+            {/* Modal replace open with open variable*/}
             <Modal
-                open={open}
+                open={undefined}
                 onClose={handleClose}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
