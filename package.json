@@ -45,7 +45,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-transform-private-property-in-object": "^7.25.7",
+    "@babel/plugin-transform-private-property-in-object": "^7.25.8",
     "gh-pages": "^6.1.1"
   }
 }
